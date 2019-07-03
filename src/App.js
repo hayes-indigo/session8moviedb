@@ -1,5 +1,5 @@
-import React from 'react';
 import './App.css';
+import './Popular';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
 
     // hey, go grab all of the stuff from that webpage
     axios.get("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=b6fbc7f3f313bd395902af464ef47262")
-      .then((response) => {
+      .then((response) => {console.log(response.data)
         // handle success
         this.setState({movies: response.data.results}); // this is our movies
       })
@@ -27,6 +27,13 @@ class App extends React.Component {
       <div className="App">
         {this.state.movies.map((movie) => {
           return (
+            <Popular
+            title={movie.title}
+            rating={movie.vote_average}
+            poster={movie.poster_path}
+            desc={movie.overview}
+            />
+
           <div>
             <h1>{movie.title}</h1>
             <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} alt="Movie Poster" />
