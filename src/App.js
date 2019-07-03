@@ -1,5 +1,6 @@
+import React from 'react';
 import './App.css';
-import './Popular';
+import Popular from './Popular';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -27,23 +28,33 @@ class App extends React.Component {
       <div className="App">
         {this.state.movies.map((movie) => {
           return (
+            <div>
             <Popular
             title={movie.title}
             rating={movie.vote_average}
             poster={movie.poster_path}
             desc={movie.overview}
             />
-
-          <div>
-            <h1>{movie.title}</h1>
-            <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} alt="Movie Poster" />
-            <p>{movie.overview}</p>
-          </div>
+            </div>
           )
-        })}
-      </div>
-    );
+        }
+        )
+      }
+        </div>
+    )
   }
 }
+
+        
+
+        //   <div>
+        //     <h1>{movie.title}</h1>
+        //     <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} alt="Movie Poster" />
+        //     <p>{movie.overview}</p>
+        //   </div>
+        //   )
+        // })}
+     
+   
 
 export default App;
